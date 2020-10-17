@@ -12,13 +12,17 @@ const UserSchema = new mongoose.Schema({
     password:{
         type: String,
         required: true,
-        unique: true
+    },
+    role: {
+        type: String,
+        default: 'user',
+        enum: ['admin', 'user']
     },
     token: String,
     age: Number,
     DNI: String,
     address: String,
-    phone: String,
+    phone: Number,
     first_visit: Boolean
     
 });
