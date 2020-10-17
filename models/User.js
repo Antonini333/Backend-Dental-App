@@ -25,6 +25,15 @@ const UserSchema = new mongoose.Schema({
     phone: Number,
     first_visit: Boolean
     
+},{
+    toJSON:{
+        transform:function (doc,ret) {
+            delete ret.password
+            delete ret.__v
+            return ret;
+
+        }
+    }
 });
 
 

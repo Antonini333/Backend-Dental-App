@@ -2,7 +2,7 @@ const { registerDecorator } = require('handlebars');
 const User = require('../models/User')
 const UserController = {
 
-    async getAll(req,res) {
+    async getAll(req,res) { //rol admin
         try {
         const users = await User.find();
         res.send(users);
