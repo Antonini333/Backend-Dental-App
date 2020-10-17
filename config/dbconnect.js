@@ -1,10 +1,10 @@
-const dbconnect = () =>{
 
-    const mongoose = require('mongoose')
-    
+    const mongoose = require('mongoose')    
     const uri = "mongodb+srv://antonini-333:juventus21@clusterpablo.6opsi.mongodb.net/clinica_dental?retryWrites=true&w=majority";
+    const localURL = "mongodb://localhost:27017/pruebas"
+const dbconnect = () =>{
     
-    mongoose.connect(uri, {
+    mongoose.connect(localURL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
@@ -16,3 +16,5 @@ const dbconnect = () =>{
     }
     
     module.exports = dbconnect;
+
+    

@@ -15,15 +15,31 @@ const UserController = {
 },
     async getById(req,res) {
         try {
-        const users = await User.findById(req.params.id);
-        res.send(users);
+        const user = await User.findById(req.params.id);
+        res.send(user);
     } catch (error) {
         console.error(error);
         res.status(500).send({
-            message: 'Something went wrong collecting users'
+            message: 'Something went wrong searching by Id'
         })
     }
     },
+
+    async getByEmail(req,res) {
+        try {
+        const user = await User.findOne({ email: req.params.email});
+        if (!user){
+            res.status(204);
+        }
+        res.send(user);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({
+            message: 'Something went wrong searching by e-mail'
+        })
+    }
+    },
+
     async register(req, res){
         try{
          const user = await User.create(req.body);
