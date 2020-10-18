@@ -103,6 +103,22 @@ const UserController = {
         }
     },
 
+    async logout (req,res) {
+        try {
+            const user = await User.findOneAndUpdate (req.body.email, {token: null}, {new: true, useFindAndModify: false});
+            res.status(201).send(
+                 "See you next time!"
+            );
+
+        } catch{
+            console.error(error);
+            res.status(500).send({
+                error,
+                message: 'You still here! Something went wrong logging out'
+            })       
+        }
+    },
+
 
 
 
