@@ -22,9 +22,11 @@ const UserSchema = new mongoose.Schema({
     token: String,
     age: Number,
     DNI: String,
+    Nationality: String,
     address: String,
     phone: Number,
-    first_visit: Boolean
+    first_visit: Boolean,
+    
     
 },{
     toJSON:{
