@@ -10,5 +10,8 @@ router.post('/', UserController.register);
 
 router.put('/:id', UserController.update);
 
+router.delete('/:id', UserController.deleteById);
+router.delete('/email/:email', UserController.deleteByEmail);
+
 
 module.exports = router;

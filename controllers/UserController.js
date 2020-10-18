@@ -1,6 +1,6 @@
-const { registerDecorator } = require('handlebars');
-const { update } = require('../models/User');
-const User = require('../models/User')
+const User = require('../models/User');
+const bycrpt = require('bcryptjs')
+
 const UserController = {
 
     async getAll(req,res) { //rol admin
@@ -63,6 +63,36 @@ const UserController = {
             })
 
         }
+    },
+
+    async deleteById(req,res) {
+        try{
+            const user = await User.findByIdAndDelete(req.params.id);
+            res.send({
+                message: "User successfully deleted", user})
+        } catch (error) {
+            console.error(error);
+            res.status(500).send({
+                message: "Something went wrong deleting user",
+                error
+            })
+        }
+    },
+
+    async deleteByEmail(req,res) {
+        try {
+            const user = await User.findOneAndDelete({email: req.params.email})
+            res.send({
+                message: "User successfully deleted"
+             })
+
+        } catch (error){
+            console.error(error);
+            res.status(500).send({
+                message: "Something went wrong deleting user",
+                error
+            })
+        } 
     }
 
 }

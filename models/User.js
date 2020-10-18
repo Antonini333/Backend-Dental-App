@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -28,7 +29,7 @@ const UserSchema = new mongoose.Schema({
 },{
     toJSON:{
         transform:function (doc,ret) {
-            delete ret.password
+            //delete ret.password
             delete ret.__v
             delete ret._id
             return ret;
@@ -45,7 +46,16 @@ UserSchema.virtual('contact').get(function (){
     }
 })
 
+UserSchema.pre('save', async function (next){
+    try {
 
+    const user = this;
+    user.password = await bcrypt.hash(user.password, 9);
+    next()
+    } catch (error){
+        console.error(error)
+    }
+})
 
 
 
