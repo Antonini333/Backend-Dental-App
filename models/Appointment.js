@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
-const moment = require('moment');
-const UserSchema = new mongoose.Schema({
+
+
+const AppointmentSchema = new mongoose.Schema({
+
     patient_name: {
         type: String,
         required: true
@@ -11,12 +13,16 @@ const UserSchema = new mongoose.Schema({
     },
     treatment: String,
 
-    token_user: {
+    user_token: {
         type: String,
         required: true
     },
-    email_user: {
+    user_email: {
         type: String
     }
 
-})
+});
+
+const Appointment= mongoose.model('Appointment', AppointmentSchema);
+
+module.exports = Appointment;
