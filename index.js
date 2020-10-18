@@ -20,7 +20,7 @@ app.use(CORS);
 
 //Endpoints
 app.use('/users', usersRouter);
-//app.use('/appointments', appointmentsRouter);
+app.use('/appointments', appointmentsRouter);
 
 
 //Port listen

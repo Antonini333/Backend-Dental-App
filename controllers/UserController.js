@@ -105,7 +105,7 @@ const UserController = {
 
     async logout (req,res) {
         try {
-            const user = await User.findOneAndUpdate (req.body.email, {token: null}, {new: true, useFindAndModify: false});
+            const user = await (await User.findOneAndUpdate (req.body.email, {token: null}, {new: true, useFindAndModify: false})).save();
             res.status(201).send(
                  "See you next time!"
             );
