@@ -1,9 +1,9 @@
 const User = require('../models/User');
-const bycrpt = require('bcryptjs')
+const bcrypt = require('bcryptjs')
 
 const UserController = {
 
-    async getAll(req,res) { //rol admin
+    async getAll(req,res) { // role admin {SEARCH}
         try {
         const users = await User.find();
         res.send(users);
@@ -41,7 +41,10 @@ const UserController = {
     }
     },
 
-    async register(req, res){
+
+
+    async register(req, res){  // user role {REGISTER, LOG IN, LOG OUT}
+
        let bodyInfo = req.body;
        // RegEx => check if the email has a valid format
        let regexEmail = /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/;
@@ -73,6 +76,38 @@ const UserController = {
     }
     },
 
+    async login (req,res) {
+        const user = await User.findOne({
+            email: req.body.email
+        });
+
+        if (!user) {
+            res.send(
+                "You're not registered." /* go to ../? to register*/
+            )
+        } else {
+
+            let passwordTrue = await bcrypt.compare(req.body.password, user.password);
+
+            if(!passwordTrue) {
+                res.send(
+                    "Your email and/or password are incorrect"
+                )
+            } else {
+                res.send(
+                    `Welcome back ${user.name}`
+                );
+                user.token = user._id
+                await user.save();
+            }
+        }
+    },
+
+
+
+
+
+
     async update(req,res) {
         try{
           const user = await User.findByIdAndUpdate(req.params.id, req.body, {new: true});
@@ -86,6 +121,8 @@ const UserController = {
 
         }
     },
+
+
 
     async deleteById(req,res) {
         try{
