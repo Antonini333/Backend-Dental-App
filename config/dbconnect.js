@@ -4,7 +4,7 @@
     const localURL = "mongodb://localhost:27017/pruebas"
 const dbconnect = () =>{
     
-    mongoose.connect(MONGOUri, {
+    mongoose.connect(localURL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,

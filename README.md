@@ -44,9 +44,9 @@ Below there is a list of the endpoints you can reach:
 
 # Users: 
 
-- POST /user/register 🔛 A new user is registered
-- POST /user/login 🔛 User logs into his account.
-- POST /user/logout 🔛 User exits his acccount.
+- POST /users/register 🔛 A new user is registered
+- POST /users/login 🔛 User logs into his account.
+- POST /users/logout 🔛 User exits his acccount.
 
 - GET /users 🔛 Show all users.
 - GET /users/:id 🔛 Search a user by his id.
