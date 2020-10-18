@@ -42,13 +42,35 @@ const UserController = {
     },
 
     async register(req, res){
-        try{
+       let bodyInfo = req.body;
+       // RegEx => check if the email has a valid format
+       let regexEmail = /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/;
+       // RegEx => Demands password to have this format [min. length: 6 characters, must contain uppercase, lowercase, digits, NO SPACES]
+       let regexPassword = /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/;
+       
+       if(!regexEmail.test(bodyInfo.email)) {
+           res.send({
+               message: "Email not has a valid format"
+           });
+           return;
+       }
+
+       if(!regexPassword.test(bodyInfo.password)) {
+           res.send({
+               message: "Password must have min. 6 characters, including uppercase, lowercase and digits"
+           });
+           return;
+       }
+       else {
+
+        try {
          const user = await User.create(req.body);
          res.send({ user, message: 'User successfully created'});
         } catch (error){
             console.error(error);
             res.status(500).send({message: 'Something went wrong creating user'})
         }
+    }
     },
 
     async update(req,res) {
