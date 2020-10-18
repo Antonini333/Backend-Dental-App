@@ -1,4 +1,5 @@
 const { registerDecorator } = require('handlebars');
+const { update } = require('../models/User');
 const User = require('../models/User')
 const UserController = {
 
@@ -47,6 +48,20 @@ const UserController = {
         } catch (error){
             console.error(error);
             res.status(500).send({message: 'Something went wrong creating user'})
+        }
+    },
+
+    async update(req,res) {
+        try{
+          const user = await User.findByIdAndUpdate(req.params.id, req.body, {new: true});
+           res.send(user)
+        } catch (error) {
+            console.error(error);
+            res.status(500).send({
+                message: "Something went wrong updating user",
+                error
+            })
+
         }
     }
 

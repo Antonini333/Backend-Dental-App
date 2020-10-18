@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: false
+        required: true
     },
     email: {
         type: String,
@@ -30,11 +30,20 @@ const UserSchema = new mongoose.Schema({
         transform:function (doc,ret) {
             delete ret.password
             delete ret.__v
+            delete ret._id
             return ret;
-
-        }
+        },
+        virtuals: true
     }
 });
+
+UserSchema.virtual('contact').get(function (){
+    const user = this;
+    return{
+        phone: user.phone,
+        address: user.address
+    }
+})
 
 
 
