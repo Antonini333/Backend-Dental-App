@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const AppointmentController = require('../controllers/AppointmentController');
+const auth = require('../middleware/auth');
 
 
-router.post('/', AppointmentController.newAppointment)
+router.post('/create', AppointmentController.newAppointment); //auth?
+router.get('/show', AppointmentController.showAppointments); //problem
+router.delete('/cancel/:id')
+
 
 
 

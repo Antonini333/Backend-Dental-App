@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken');
 
 const UserController = {
 
@@ -77,46 +78,48 @@ const UserController = {
     },
 
     async login (req,res) {
-        const user = await User.findOne({
+        let userFound = await User.findOne({
             email: req.body.email
         });
+        if(!userFound) {
+            res.send({
+                message: "Wrong credentials"
+            })
+        }else{
+            const isMatch = await bcrypt.compare(req.body.password, userFound.password);
+            if(isMatch){
 
-        if (!user) {
-            res.send(
-                "You're not registered." /* go to ../? to register*/
-            )
-        } else {
+                const token = jwt.sign({id: userFound.id }, "mymotherpetsme", {expiresIn: '30d'})
+                userFound.token = token;
+                await userFound.save()
 
-            let passwordTrue = await bcrypt.compare(req.body.password, user.password);
-
-            if(!passwordTrue) {
-                res.send(
-                    "Your email and/or password are incorrect"
-                )
-            } else {
-                res.send(
-                    `Welcome back ${user.name}`
-                );
-                user.token = user._id
-                await user.save();
+                res.send({
+                    message: `Welcome back ${userFound.name}`,
+                    name: userFound.name,
+                    email: userFound.email,
+                    token: userFound.token
+            
+                })
+            }else{
+                return res.status(400).send({
+                    message: "Wrong credentials"
+                })
             }
         }
     },
 
     async logout (req,res) {
         try {
-            const user = await (await User.findOneAndUpdate (req.body.email, {token: null}, {new: true, useFindAndModify: false})).save();
-            res.status(201).send(
-                 "See you next time!"
-            );
-
-        } catch{
-            console.error(error);
-            res.status(500).send({
-                error,
-                message: 'You still here! Something went wrong logging out'
-            })       
-        }
+            const token = req.headers.authorization.split(' ')[1];
+            const outUser = await User.findOne({token:token});
+            outUser.token = null;
+            outUser.save();
+            res.send('We hope to see you soon.')
+         
+          } catch (error) {
+            console.log(error)
+            res.status(500).send({message: 'There was a problem trying to log out.'})
+          }
     },
 
 

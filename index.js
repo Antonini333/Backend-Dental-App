@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const PORT = 3006;
+const auth = require('./middleware/auth');
 const CORS = require('./middleware/CORS');
 
 //DB Connection
