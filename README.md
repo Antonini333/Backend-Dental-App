@@ -2,7 +2,7 @@
 
 ## What is DentalClinicAppointments ❓
 
-DentalClinicAppointments is, for now, the backend part of an application made for users of a dental clinic, where they can manage his appointments 📑
+DentalClinicAppointments is, for now, the backend part of an application made for users of a dental clinic, where they can manage his appointments ## 📑
 
 
 
