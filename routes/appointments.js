@@ -4,8 +4,8 @@ const AppointmentController = require('../controllers/AppointmentController');
 const auth = require('../middleware/auth');
 
 
-router.post('/create', AppointmentController.newAppointment); //auth?
-router.get('/show', AppointmentController.showAppointments); //problem
+router.post('/create', AppointmentController.newAppointment); 
+router.get('/show', AppointmentController.showAppointments); 
 router.delete('/cancel', AppointmentController.cancelAppointment);
 
 

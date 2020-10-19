@@ -24,6 +24,8 @@ DentalClinicAppointments is, for now, the backend part of an application made fo
 - Bycrpt.
 - RegEx.
 
+
+
 # Getting Started
 
 
@@ -64,3 +66,34 @@ Below there is a list of the endpoints you can reach:
 - POST /appointments/create/ 🔛 User can make a new appointment.
 
 - DELETE /appointments/cancel/🔛 User can cancel an appointment previously made.
+
+
+
+# Screenshots:
+
+## SIGN UP
+ 
+ ![Screenshot](screenshotZ/register-user.png) 
+ 
+ ## LOG IN
+ 
+  ![Screenshot](screenshotZ/login.png) 
+
+## LOG OUT
+
+![Screenshot](screenshotZ/logout.png)
+  
+  ## SHOW ALL USERS
+  
+ ![Screenshot](screenshotZ/allusers.png) 
+ 
+ ## CREATE APPOINTMENT
+ 
+![Screenshot](screenshotZ/createapp.png)
+
+## CHECK APPOINTMENTS
+
+![Screenshot](screenshotZ/consultapp.png)
+
+# DELETE APPOINTMENT 
+![Screenshot](screenshotZ/deleteapp.png)

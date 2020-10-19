@@ -11,7 +11,7 @@ const AppointmentSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Campo obligatorio']
     },
-    observations: {
+    symptoms: {
         type: String
     },
     name_user: {
