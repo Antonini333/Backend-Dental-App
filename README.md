@@ -33,7 +33,7 @@ You can test the endpoints with the deployed app URL (https://guarded-scrubland-
  
    $ npm init -y 
    
-   $ npm i express mongoose bcrypt
+   $ npm i express mongoose bcrypt jsonwebtoken 
    
 
 ## Important ❗
