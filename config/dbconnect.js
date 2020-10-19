@@ -20,5 +20,5 @@ const dbconnect = () =>{
     const mongoose = require('mongoose');
     
     const MONGOUri = process.env.MONGOUri || "mongodb://localhost:27017/pruebas";
-    mongoose.connect(MongoURI,{useCreateIndex:true, useNewUrlParser:true, useUnifiedTopology: true})
+    mongoose.connect(MONGOUri,{useCreateIndex:true, useNewUrlParser:true, useUnifiedTopology: true})
     .then(()=>console.log('conected to Mongodb:' +MONGOUri))
