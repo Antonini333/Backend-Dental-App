@@ -1,14 +1,15 @@
 //Basic Import Section
 const express = require('express');
 const app = express();
-const PORT = process.env.port || 3006;
+const PORT = process.env.PORT || 3006;
 const auth = require('./middleware/auth');
 const CORS = require('./middleware/CORS');
 const mongoose = require('mongoose');
+import './config/dbconnect.js';
 
 //DB Connection
-const dbconnect = require('./config/dbconnect');
-dbconnect();
+//const dbconnect = require('./config/dbconnect');
+//dbconnect();
 
 //Routes
 const usersRouter = require('./routes/users');
