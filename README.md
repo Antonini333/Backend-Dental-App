@@ -61,6 +61,6 @@ Below there is a list of the endpoints you can reach:
 
 - GET /appointments/show 🔛 All appointments are shown.
 
-- POST /appointments/create 🔛 User can make a new appointment.
+- POST /appointments/create/:email 🔛 User can make a new appointment.
 
 - DELETE /appointments/cancel/:id 🔛 User can cancel an appointment previously made.
