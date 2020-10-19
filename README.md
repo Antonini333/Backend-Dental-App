@@ -46,26 +46,26 @@ Below there is a list of the endpoints you can reach:
 
 # Users: 
 
-- POST /users/register 🔛 A new user is registered
-- POST /users/login 🔛 User logs into his account.
-- POST /users/logout 🔛 User exits his acccount.
+- POST https://guarded-scrubland-93096.herokuapp.com/users/register 🔛 A new user is registered
+- POST https://guarded-scrubland-93096.herokuapp.com/users/login 🔛 User logs into his account.
+- POST https://guarded-scrubland-93096.herokuapp.com/users/logout 🔛 User exits his acccount.
 
-- GET /users 🔛 Show all users.
-- GET /users/:id 🔛 Search a user by his id.
-- GET /users/email/:email 🔛 Search a user by his email
+- GET https://guarded-scrubland-93096.herokuapp.com/users 🔛 Show all users.
+- GET https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 Search a user by his id.
+- GET https://guarded-scrubland-93096.herokuapp.com/users/email/:email 🔛 Search a user by his email
 
-- PUT /users/:id 🔛 Modify info of a user
+- PUT https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 Modify info of a user
 
-- DELETE /users/:id 🔛 Delete a client by his id.
-- DELETE /users/email/:email 🔛 Delete a client by his id.
+- DELETE https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 Delete a client by his id.
+- DELETE https://guarded-scrubland-93096.herokuapp.com/users/email/:email 🔛 Delete a client by his id.
 
 # Appointments: 
 
-- GET /appointments/show/ 🔛 All appointments are shown.
+- GET https://guarded-scrubland-93096.herokuapp.com/appointments/show/ 🔛 All appointments are shown.
 
-- POST /appointments/create/ 🔛 User can make a new appointment.
+- POST https://guarded-scrubland-93096.herokuapp.com/appointments/create/ 🔛 User can make a new appointment.
 
-- DELETE /appointments/cancel/🔛 User can cancel an appointment previously made.
+- DELETE https://guarded-scrubland-93096.herokuapp.com/appointments/cancel/🔛 User can cancel an appointment previously made.
 
 
 
