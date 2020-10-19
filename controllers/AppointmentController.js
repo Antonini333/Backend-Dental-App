@@ -41,7 +41,7 @@ const AppointmentController = {
   async showAppointments (req,res) {
     try{
       const appointment = await Appointment.findOne({
-        email_user: req.params.email_user
+        email_user: req.body.email_user
       })
       res.send({appointment})
     } catch (error){
