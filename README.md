@@ -33,7 +33,7 @@ You can test the endpoints with the deployed app URL (https://guarded-scrubland-
  
    $ npm init -y 
    
-   $ npm i express mongoose bcrypt
+   $ npm i express mongoose bcrypt jsonwebtoken 
    
 
 ## Important ❗
@@ -59,8 +59,8 @@ Below there is a list of the endpoints you can reach:
 
 # Appointments: 
 
-- GET /appointments/show 🔛 All appointments are shown.
+- GET /appointments/show/ 🔛 All appointments are shown.
 
-- POST /appointments/create 🔛 User can make a new appointment.
+- POST /appointments/create/ 🔛 User can make a new appointment.
 
-- DELETE /appointments/cancel/:id 🔛 User can cancel an appointment previously made.
+- DELETE /appointments/cancel/🔛 User can cancel an appointment previously made.
