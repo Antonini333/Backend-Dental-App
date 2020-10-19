@@ -55,8 +55,8 @@ const AppointmentController = {
     async cancelAppointment (req,res) { 
         try { 
         const appointment = await Appointment.findOneAndDelete({
-          email_user: req.params.email_user,
-          date: req.params.date,
+          email_user: req.body.email_user,
+          date: req.bady.date,
           
 
         })
