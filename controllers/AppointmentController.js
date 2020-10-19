@@ -60,7 +60,7 @@ const AppointmentController = {
           
 
         })
-          res.send({message: `Appointment succesfully deleted.`})
+          res.send({message: `Appointment succesfully deleted.`, appointment})
         }catch(error){
           console.error(error);
             res.status(500).send({
