@@ -46,18 +46,19 @@ Below there is a list of the endpoints you can reach:
 
 # Users: 
 
-- POST https://guarded-scrubland-93096.herokuapp.com/users/register 🔛 A new user is registered
-- POST https://guarded-scrubland-93096.herokuapp.com/users/login 🔛 User logs into his account.
-- POST https://guarded-scrubland-93096.herokuapp.com/users/logout 🔛 User exits his acccount.
+-  https://guarded-scrubland-93096.herokuapp.com/users/register 🔛 A new user is registered  (POST method)
+-  https://guarded-scrubland-93096.herokuapp.com/users/login 🔛 User logs into his account.  (POST method)
+-  https://guarded-scrubland-93096.herokuapp.com/users/logout 🔛 User exits his acccount.  (POST method)
 
-- GET https://guarded-scrubland-93096.herokuapp.com/users 🔛 Show all users.
-- GET https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 Search a user by his id.
-- GET https://guarded-scrubland-93096.herokuapp.com/users/email/:email 🔛 Search a user by his email
+-  https://guarded-scrubland-93096.herokuapp.com/users 🔛 Show all users. (GET method)
+-  https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 Search a user by his id. (GET method)
+-  https://guarded-scrubland-93096.herokuapp.com/users/email/:email 🔛 Search a user by his email (GET method)
 
-- PUT https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 Modify info of a user
+-  https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 Modify info of a user (PUT method)
 
-- DELETE https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 Delete a client by his id.
-- DELETE https://guarded-scrubland-93096.herokuapp.com/users/email/:email 🔛 Delete a client by his id.
+-  https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 Delete a client by his id. (DELETE method)
+- https://guarded-scrubland-93096.herokuapp.com/users/email/:email 🔛 Delete a client by his id. (DELETE method) 
+
 
 # Appointments: 
 
