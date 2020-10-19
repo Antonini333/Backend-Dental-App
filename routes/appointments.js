@@ -5,7 +5,7 @@ const auth = require('../middleware/auth');
 
 
 router.post('/create', AppointmentController.newAppointment); 
-router.get('/show', AppointmentController.showAppointments); 
+router.get('/show/:email_user', AppointmentController.showAppointments); 
 router.delete('/cancel', AppointmentController.cancelAppointment);
 
 
