@@ -40,7 +40,7 @@ const AppointmentController = {
 
   async showAppointments (req,res) {
     try{
-      const appointment = await Appointment.find()({
+      const appointment = await Appointment.findOne({
         email_user: req.params.email_user
       })
       res.send({appointment})
