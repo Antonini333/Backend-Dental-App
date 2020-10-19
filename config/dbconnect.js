@@ -22,3 +22,4 @@ const dbconnect = () =>{
     const MONGOUri = process.env.MONGOUri || "mongodb://localhost:27017/pruebas";
     mongoose.connect(MONGOUri,{useCreateIndex:true, useNewUrlParser:true, useUnifiedTopology: true})
     .then(()=>console.log('conected to Mongodb:' +MONGOUri))
+    .catch(console.error)
