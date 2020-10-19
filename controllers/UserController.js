@@ -72,7 +72,7 @@ const UserController = {
          res.send({ user, message: 'User successfully created'});
         } catch (error){
             console.error(error);
-            res.status(500).send({message: 'Something went wrong creating user'})
+            res.status(500).send({message: 'User already exists'})
         }
     }
     },
@@ -110,11 +110,12 @@ const UserController = {
 
     async logout (req,res) {
         try {
-            const token = req.headers.authorization.split(' ')[1];
-            const outUser = await User.findOne({token:token});
-            outUser.token = null;
-            outUser.save();
-            res.send('We hope to see you soon.')
+            const email = { email: req.body.email 
+            };
+            const emptyToken = { token: ""
+        };
+        const user = await User.findOneAndUpdate(email, emptyToken)
+            res.send(`Bye ${user.name}, see you next time!`)
          
           } catch (error) {
             console.log(error)

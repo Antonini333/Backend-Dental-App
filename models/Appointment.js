@@ -1,22 +1,27 @@
 const mongoose = require('mongoose');
 const AppointmentSchema = new mongoose.Schema({
 
-    patient_name: {
-        type: String
+    status: {
+        type: String,
+        default: 'pending',
+        enum: ['pending', 'canceled', 'expired'],
+        required: [true, 'Campo obligatorio']
     },
     date: {
+        type: String,
+        required: [true, 'Campo obligatorio']
+    },
+    observations: {
         type: String
     },
-    
-    symptoms: {
+    name_user: {
         type: String
-     },
-
-    patient_token: {
-        type: String
-        
     },
-   patient_email: {
+    token_user: {
+        type: String,
+        required: true
+    },
+    email_user: {
         type: String
     }
 

@@ -5,16 +5,28 @@ const bcrypt = require('bcryptjs');
 const AppointmentController = {
 
     async newAppointment (req,res) {
+      let user = await User.findOne({
+        email: req.body.email
+      });
+
+      if(!user.token) {
+        res.status(400).send({
+          message: "Go register and login first"
+        });
+      }else{
 
         try{
           const appointment = await Appointment({
-            patient_name: req.body.patient_name,
+          
             date: req.body.date,
+            name_user: user.name,
             symptoms: req.body.symptoms,
-            patient_email: req.body.patient_email
+            email_user: user.email,
+            token_user: user.token
+
           }).save();
           res.send({
-            message: `Appointment succesfully created for the date ${appointment.date}`
+            message: `Appointment succesfully created for the date ${appointment.date}.`, appointment
           })
         }catch (error) {
           console.log(error)
@@ -22,13 +34,14 @@ const AppointmentController = {
             message: 'There was a problem trying to create an appointment.' + error
           })
         }
+        }
       
 },
 
   async showAppointments (req,res) {
     try{
       const appointment = await Appointment.find({
-        userId: req.user.id
+        email_user: req.params.email_user
       })
       res.send({appointment})
     } catch (error){
@@ -41,7 +54,11 @@ const AppointmentController = {
     
     async cancelAppointment (req,res) { 
         try { 
-        const appointment = await Appointment.findByIdAndDelete({ _id: req.params.id
+        const appointment = await Appointment.findOneAndDelete({
+          email_user: req.params.email_user,
+          date: req.params.date,
+          
+
         })
           res.send({message: `Appointment succesfully deleted.`})
         }catch(error){
