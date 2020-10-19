@@ -55,12 +55,12 @@ const AppointmentController = {
     async cancelAppointment (req,res) { 
         try { 
         const appointment = await Appointment.findOneAndDelete({
-          email_user: req.body.email_user,
-          date: req.body.date,
+          email_user: req.params.email_user,
+        
           
 
         })
-          res.send({message: `Appointment succesfully deleted.`, appointment})
+          res.send({message: `Appointment succesfully deleted.`})
         }catch(error){
           console.error(error);
             res.status(500).send({
