@@ -62,11 +62,11 @@ Below there is a list of the endpoints you can reach:
 
 # Appointments: 
 
-- GET https://guarded-scrubland-93096.herokuapp.com/appointments/show/ 🔛 All appointments are shown.
+- GET https://guarded-scrubland-93096.herokuapp.com/appointments/show/INSERT-token_user-HERE 🔛 All appointments are shown.
 
-- POST https://guarded-scrubland-93096.herokuapp.com/appointments/create/ 🔛 User can make a new appointment.
+- POST https://guarded-scrubland-93096.herokuapp.com/appointments/create/INSERT-EMAIL-HERE 🔛 User can make a new appointment. POST ("date": , "symptoms")
 
-- DELETE https://guarded-scrubland-93096.herokuapp.com/appointments/cancel/🔛 User can cancel an appointment previously made.
+- DELETE https://guarded-scrubland-93096.herokuapp.com/appointments/cancel/INSERT-_id-HERE 🔛 User can cancel an appointment previously made with his ID.
 
 
 
