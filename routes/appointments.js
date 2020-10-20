@@ -4,9 +4,10 @@ const AppointmentController = require('../controllers/AppointmentController');
 const auth = require('../middleware/auth');
 
 
-router.post('/create', AppointmentController.newAppointment); 
-router.get('/show/:email_user', AppointmentController.showAppointments); 
-router.delete('/cancel/:email_user', AppointmentController.cancelAppointment);
+//router.get('/email/:email', AppointmentController.appByEmail);
+router.post('/create/:email', auth, AppointmentController.newAppointment); // CHECKED
+router.get('/show/:token_user', auth, AppointmentController.showAppointments); //Creo que funciona
+router.delete('/cancel/:_id', auth, AppointmentController.cancelAppointment); // CHECKED
 
 
 

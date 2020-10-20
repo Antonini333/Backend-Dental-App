@@ -6,10 +6,10 @@ const AppointmentController = {
 
     async newAppointment (req,res) {
       let user = await User.findOne({
-        email: req.body.email
+        email: req.params.email
       });
 
-      if(!user.token) {
+     if(!user.token) {
         res.status(400).send({
           message: "Go register and login first"
         });
@@ -27,21 +27,37 @@ const AppointmentController = {
           })
           res.send({
             message: `Appointment succesfully created for the date ${appointment.date}.`, appointment
-          }).save();
+          });
         }catch (error) {
           console.log(error)
           res.status(500).send({
             message: 'There was a problem trying to create an appointment.' + error
           })
-        }
+       }
         }
       
 },
+/*
+async appByEmail(req,res) {
+  try {
+  const appointment = await Appointment.findOne({ email_user: req.params.email_user});
+  if (!appointment){
+      res.status(204);
+  }
+  res.send(appointment);
+
+} catch (error) {
+  console.error(error);
+  res.status(500).send({
+      message: 'Something went wrong searching by e-mail'
+  })
+}
+},*/
 
   async showAppointments (req,res) {
     try{
       const appointment = await Appointment.find({
-        email_user: req.params.email_user
+        token_user: req.params.token_user
       })
       res.send({appointment})
     } catch (error){
@@ -55,12 +71,12 @@ const AppointmentController = {
     async cancelAppointment (req,res) { 
         try { 
         const appointment = await Appointment.findOneAndDelete({
-          email_user: req.params.email_user,
+          _id: req.params._id
         
           
 
         })
-          res.send({message: `Appointment succesfully deleted.`})
+          res.send({message: `Appointment succesfully deleted.`, appointment})
         }catch(error){
           console.error(error);
             res.status(500).send({

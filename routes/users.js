@@ -2,18 +2,18 @@ const express = require('express');
 const router = express.Router();
 const UserController = require('../controllers/UserController')
 
-router.get('/', UserController.getAll); //CHECK
-router.get('/:id', UserController.getById); //CHECK
-router.get('/email/:email', UserController.getByEmail); //CHECK
+router.get('/', UserController.getAll); //CHECKED
+router.get('/:id', UserController.getById); //CHECKED
+router.get('/email/:email', UserController.getByEmail); //CHECKED
 
-router.post('/register', UserController.register); //CHECK
-router.post('/login', UserController.login); //CHECK (devuelve token firmado)
-router.post('/logout', UserController.logout);
+router.post('/register', UserController.register); //CHECKED 
+router.post('/login', UserController.login); //CHECKED 
+router.post('/logout', UserController.logout); //CHECKED 
 
-router.put('/:id', UserController.update); // CHECK
+router.put('/:id', UserController.update); // CHECKED 
 
-router.delete('/:id', UserController.deleteById); //CHECK
-router.delete('/email/:email', UserController.deleteByEmail); //CHECK
+router.delete('/:id', UserController.deleteById); //CHECKED
+router.delete('/email/:email', UserController.deleteByEmail); //CHECKED
 
 
 

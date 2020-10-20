@@ -45,37 +45,15 @@ const UserController = {
 
 
     async register(req, res){  // user role {REGISTER, LOG IN, LOG OUT}
-
-       let bodyInfo = req.body;
-       // RegEx => check if the email has a valid format
-       let regexEmail = /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/;
-       // RegEx => Demands password to have this format [min. length: 6 characters, must contain uppercase, lowercase, digits, NO SPACES]
-       let regexPassword = /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/;
-       
-       if(!regexEmail.test(bodyInfo.email)) {
-           res.send({
-               message: "Email not has a valid format"
-           });
-           return;
-       }
-
-       if(!regexPassword.test(bodyInfo.password)) {
-           res.send({
-               message: "Password must have min. 6 characters, including uppercase, lowercase and digits"
-           });
-           return;
-       }
-       else {
-
-        try {
+         try {
          const user = await User.create(req.body);
          res.send({ user, message: 'User successfully created'});
         } catch (error){
             console.error(error);
-            res.status(500).send({message: 'User already exists'})
+            res.status(500).send({message: 'User already exists', error})
         }
-    }
     },
+    
 
     async login (req,res) {
         let userFound = await User.findOne({
@@ -83,16 +61,17 @@ const UserController = {
             
         });
         if(!userFound) {
-            res.send({
-                message: "Wrong credentials"
+            res.status(400).send({
+                message: "Wrong credentials",
+        
             })
         }else{
-            const isMatch = await bcrypt.compare(req.body.password, userFound.password);
+            const isMatch = await bcrypt.compare(req.body.password, userFound.password); console.log(isMatch, req.body.password, userFound)
             if(isMatch){
 
                 const token = jwt.sign({id: userFound.id }, "mymotherpetsme", {expiresIn: '30d'})
                 userFound.token = token;
-                await userFound.save()
+                await userFound.replaceOne(userFound);
 
                 res.send({
                     message: `Welcome back ${userFound.name}`,
@@ -100,7 +79,7 @@ const UserController = {
                     email: userFound.email,
                     token: userFound.token
             
-                })
+                });
             }else{
                 return res.status(400).send({
                     message: "Wrong credentials"
