@@ -80,6 +80,7 @@ const UserController = {
     async login (req,res) {
         let userFound = await User.findOne({
             email: req.body.email
+            
         });
         if(!userFound) {
             res.send({

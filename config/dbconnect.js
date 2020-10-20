@@ -19,7 +19,7 @@ const dbconnect = () =>{
 
     const mongoose = require('mongoose');
     
-    const MONGOUri = process.env.MONGOUri || "mongodb://localhost:27017/pruebas";
-    mongoose.connect(MONGOUri,{useCreateIndex:true, useNewUrlParser:true, useUnifiedTopology: true})
+   // const MONGOUri = process.env.MONGOUri || "mongodb://localhost:27017/pruebas";
+    mongoose.connect("mongodb://localhost:27017/pruebas", {useCreateIndex:true, useNewUrlParser:true, useUnifiedTopology: true})
     .then(()=>console.log('conected to Mongodb:' +MONGOUri))
     .catch(console.error)
