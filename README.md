@@ -75,7 +75,7 @@ Below there is a list of the endpoints you can reach:
 
 - https://guarded-scrubland-93096.herokuapp.com/appointments/show/INSERT-EMAIL-HERE 🔛 **Show appointments of user by date** (GET method)
 
-  Required parameters by body: "date" // If you don't facilitate a date, all dates of user will be shown.
+  Required parameters by body: "date" // If you don't facilitate a date, all appointments of user will be shown.
 
 - https://guarded-scrubland-93096.herokuapp.com/appointments/create/INSERT-EMAIL-HERE 🔛 **User can make a new appointment** (POST method) 
 
@@ -83,7 +83,7 @@ Below there is a list of the endpoints you can reach:
 
 - https://guarded-scrubland-93096.herokuapp.com/appointments/cancel/INSERT-EMAIL-HERE 🔛 **User can cancel an appointment previously made** (DELETE method)
 
-  Required parameters by body: "date" // If you don't facilitate a date, all dates of user will be shown
+  Required parameters by body: "date" // If you don't facilitate a date, all appointments of user will be erased.
 
 
 
