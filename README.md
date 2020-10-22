@@ -2,11 +2,11 @@
 
 ## What is DentalClinicAppointments ❓
 
-DentalClinicAppointments is, for now, the backend part of an application made for users of a dental clinic, where they can manage his appointments ## 📑
+### DentalClinicAppointments is, for now, the backend part of an application made for users of a dental clinic, where they can manage his appointments  📑
 
 
 
-🔧🔧 Technologies:
+## 🔧🔧 Technologies:
 
 - Javascript.
 - NodeJS.
@@ -19,7 +19,7 @@ DentalClinicAppointments is, for now, the backend part of an application made fo
 - GitHub.
 - Heroku.
 
-👀 Dependencies:
+## 👀 Dependencies:
 - JWT.
 - Bycrpt.
 - RegEx.
@@ -31,7 +31,7 @@ DentalClinicAppointments is, for now, the backend part of an application made fo
 
 ## Choose:
 
-You can test the endpoints with the deployed app URL (https://guarded-scrubland-93096.herokuapp.com) or download the code, open it on vsCode and run in terminal:
+You can test the endpoints with the deployed app URL **(https://guarded-scrubland-93096.herokuapp.com)** or download the code, open it on vsCode and run in terminal:
  
    $ npm init -y 
    
@@ -46,27 +46,44 @@ Below there is a list of the endpoints you can reach:
 
 # Users: 
 
--  https://guarded-scrubland-93096.herokuapp.com/users/register 🔛 A new user is registered  (POST method)
--  https://guarded-scrubland-93096.herokuapp.com/users/login 🔛 User logs into his account.  (POST method)
--  https://guarded-scrubland-93096.herokuapp.com/users/logout 🔛 User exits his acccount.  (POST method)
+-  https://guarded-scrubland-93096.herokuapp.com/users/register 🔛 **A new user is registered**  (POST method)
 
--  https://guarded-scrubland-93096.herokuapp.com/users 🔛 Show all users. (GET method)
--  https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 Search a user by his id. (GET method)
--  https://guarded-scrubland-93096.herokuapp.com/users/email/:email 🔛 Search a user by his email (GET method)
+   Required parameters by body to register: "name", "email" and "password"
 
--  https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 Modify info of a user (PUT method)
+-  https://guarded-scrubland-93096.herokuapp.com/users/login 🔛 **User logs into his account**  (POST method)
 
--  https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 Delete a client by his id. (DELETE method)
-- https://guarded-scrubland-93096.herokuapp.com/users/email/:email 🔛 Delete a client by his id. (DELETE method) 
+   Required parameters by body to login: "name", "email"
+   
+-  https://guarded-scrubland-93096.herokuapp.com/users/logout 🔛 **User exits his acccount**  (POST method)
+
+   Required parameters by body to logout: "name", "email"
+
+-  https://guarded-scrubland-93096.herokuapp.com/users 🔛 **Show all users** (GET method)
+
+-  https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 **Search a user by his id** (GET method)
+
+-  https://guarded-scrubland-93096.herokuapp.com/users/email/:email 🔛 **Search a user by his email** (GET method)
+
+-  https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 **Modify info of a user** (PUT method)
+
+-  https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 **Delete a client by his id** (DELETE method)
+
+- https://guarded-scrubland-93096.herokuapp.com/users/email/:email 🔛 **Delete a client by his id** (DELETE method) 
 
 
 # Appointments: 
 
-- GET https://guarded-scrubland-93096.herokuapp.com/appointments/show/INSERT-token_user-HERE 🔛 All appointments are shown.
+- https://guarded-scrubland-93096.herokuapp.com/appointments/show/INSERT-EMAIL-HERE 🔛 **Show appointments of user by date** (GET method)
 
-- POST https://guarded-scrubland-93096.herokuapp.com/appointments/create/INSERT-EMAIL-HERE 🔛 User can make a new appointment. POST ("date": , "symptoms")
+  Required parameters by body: "date" // If you don't facilitate a date, all dates of user will be shown.
 
-- DELETE https://guarded-scrubland-93096.herokuapp.com/appointments/cancel/INSERT-_id-HERE 🔛 User can cancel an appointment previously made with his ID.
+- https://guarded-scrubland-93096.herokuapp.com/appointments/create/INSERT-EMAIL-HERE 🔛 **User can make a new appointment** (POST method) 
+
+  Required parameters by body: "date", "symptoms"
+
+- https://guarded-scrubland-93096.herokuapp.com/appointments/cancel/INSERT-EMAIL-HERE 🔛 **User can cancel an appointment previously made** (DELETE method)
+
+  Required parameters by body: "date" // If you don't facilitate a date, all dates of user will be shown
 
 
 
