@@ -4,8 +4,7 @@ const AppointmentSchema = new mongoose.Schema({
     status: {
         type: String,
         default: 'pending',
-        enum: ['pending', 'canceled', 'expired'],
-        required: [true, 'Campo obligatorio']
+        enum: ['pending', 'canceled', 'expired']
     },
     date: {
         type: String,
