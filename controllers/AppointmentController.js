@@ -16,7 +16,7 @@ const AppointmentController = {
       }else{
 
         try{
-          const appointment = await Appointment({
+          const appointment = await Appointment.create({
           
             date: req.body.date,
             name_user: user.name,
@@ -57,7 +57,8 @@ async appByEmail(req,res) {
   async showAppointments (req,res) {
     try{
       const appointment = await Appointment.find({
-        token_user: req.params.token_user
+        email_user: req.params.email_user,
+        date: req.body.date
       })
       res.send({appointment})
     } catch (error){
@@ -71,7 +72,8 @@ async appByEmail(req,res) {
     async cancelAppointment (req,res) { 
         try { 
         const appointment = await Appointment.findOneAndDelete({
-          _id: req.params._id
+          email_user: req.params.email_user,
+          date: req.body.date
         
           
 

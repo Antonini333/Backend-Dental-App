@@ -34,6 +34,7 @@ const UserSchema = new mongoose.Schema({
     token: {
         type: String 
    },
+   
 
     age: Number,
     DNI: String,
@@ -41,6 +42,10 @@ const UserSchema = new mongoose.Schema({
     address: String,
     phone: Number,
     first_visit: Boolean,
+    appointments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'appointment'
+    }]
     
     
 },{

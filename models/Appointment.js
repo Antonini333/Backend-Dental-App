@@ -23,6 +23,10 @@ const AppointmentSchema = new mongoose.Schema({
     },
     email_user: {
         type: String
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
     }
 
 });
