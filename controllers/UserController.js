@@ -73,12 +73,13 @@ const UserController = {
                 userFound.token = token;
                 await userFound.replaceOne(userFound);
 
-                res.send(
-                    [name = userFound.name,
-                    email = userFound.email,
-                    token = userFound.token]
+                res.send({
+                    message: `Welcome back ${userFound.name}`,
+                    name: userFound.name,
+                    email: userFound.email,
+                    token: userFound.token
             
-                );
+                });
             }else{
                 return res.status(400).send({
                     message: "Wrong credentials"
