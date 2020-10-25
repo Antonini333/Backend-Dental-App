@@ -1,9 +1,9 @@
 //Basic Import Section
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3006;
+const PORT = process.env.PORT || 3001;
 const auth = require('./middleware/auth');
-const CORS = require('./middleware/CORS');
+const cors = require('./middleware/cors');
 const mongoose = require('mongoose');
 const dbconnect = require('./config/dbconnect.js');
 
@@ -17,7 +17,7 @@ const appointmentsRouter = require('./routes/appointments')
 
 //Middleware
 app.use(express.json());
-app.use(CORS);
+app.use(cors);
 //app.use(auth); LOL
 
 
