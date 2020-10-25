@@ -74,7 +74,6 @@ const UserController = {
                 await userFound.replaceOne(userFound);
 
                 res.send({
-                    message: `Welcome back ${userFound.name}`,
                     name: userFound.name,
                     email: userFound.email,
                     token: userFound.token
