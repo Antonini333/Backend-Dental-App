@@ -60,7 +60,8 @@ async appByEmail(req,res) {
         email_user: req.params.email_user,
         date: req.body.date
       })
-      res.send({appointment})
+
+      res.send(appointment)
     } catch (error){
       console.error(error);
       res.status(500).send({

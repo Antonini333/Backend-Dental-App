@@ -76,7 +76,10 @@ const UserController = {
                 res.send({
                     name: userFound.name,
                     email: userFound.email,
-                    token: userFound.token
+                    token: userFound.token,
+                    age: userFound.name,
+                    nationality: userFound.nationality,
+                    phone: userFound.phone
             
                 });
             }else{
