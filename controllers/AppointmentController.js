@@ -56,7 +56,7 @@ async appByEmail(req,res) {
 
   async showAppointments (req,res) {
     try{
-      const appointment = await Appointment.findOne({
+      const appointment = await Appointment.find({
         email_user: req.params.email_user,
         date: req.body.date
       })
@@ -65,7 +65,7 @@ async appByEmail(req,res) {
     } catch (error){
       console.error(error);
       res.status(500).send({
-        message: 'There was a problem trying to show all the appointments.'
+        message: 'There was a problem trying to show  the appointments.'
       })
     }
     },
