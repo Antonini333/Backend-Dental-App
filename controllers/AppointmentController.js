@@ -58,7 +58,8 @@ async appByEmail(req,res) {
     try{
       const appointment = await Appointment.find({
         email_user: req.params.email_user,
-        date: req.body.date
+        date: req.body.date,
+        token_user: user.token
       })
       
       res.send({appointment})
