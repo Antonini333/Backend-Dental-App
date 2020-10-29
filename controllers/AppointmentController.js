@@ -6,7 +6,7 @@ const AppointmentController = {
 
     async newAppointment (req,res) {
       let user = await User.findOne({
-        email: req.params.email
+        token: req.params.token
       });
 
      if(!user.token) {
