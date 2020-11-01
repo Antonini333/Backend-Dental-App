@@ -19,6 +19,7 @@ const AppointmentController = {
           const appointment = await Appointment.create({
           
             date: req.body.date,
+            hour: req.body.hour,
             name_user: user.name,
             symptoms: req.body.symptoms,
             email_user: user.email,
