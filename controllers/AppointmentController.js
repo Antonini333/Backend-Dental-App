@@ -72,7 +72,7 @@ async appByEmail(req,res) {
     async cancelAppointment (req,res) { 
         try { 
         const appointment = await Appointment.findOneAndDelete({
-          email_user: req.params.email_user
+          _id: req.params._id
         
           
 
