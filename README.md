@@ -41,7 +41,7 @@ You can test the endpoints with the deployed app URL **(https://guarded-scrublan
 
 ## Important ❗
 
-You will need to use Postman to make all the server petitions since we haven't a frontend yet.
+You will need to use Postman to make server petitions since we haven't a frontend yet.
 Below there is a list of the endpoints you can reach:
 
 
